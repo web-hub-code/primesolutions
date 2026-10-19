@@ -350,6 +350,14 @@
                         <strong style="color:var(--primary);"><i class="fas fa-bullhorn"></i> Notice from CEO:</strong> <span id="clientBroadcastText"></span>
                     </div>
 
+                    <!-- Client Referral Link Section -->
+                    <div style="background:rgba(0,0,0,0.3); padding:15px; border-radius:20px; border:1px solid var(--border); margin-bottom:15px;">
+                        <h4 style="color:var(--primary); font-size:0.85rem; margin-bottom:6px;"><i class="fas fa-share-alt"></i> Client Referral & Affiliate Link</h4>
+                        <p style="font-size:0.7rem; opacity:0.8; margin-bottom:8px;">Share this link to invite clients and earn rewards:</p>
+                        <input type="text" id="clientReferralLink" class="auth-input" readonly style="margin-bottom:8px; font-size:0.7rem; background:rgba(255,255,255,0.02);">
+                        <button class="btn-action" style="margin-top:0; padding:8px; font-size:0.75rem;" onclick="copyReferralLink()">Copy Referral Link</button>
+                    </div>
+
                     <!-- Official Agency Payment Methods Info Box -->
                     <div style="background:rgba(0,0,0,0.3); padding:15px; border-radius:20px; border:1px solid var(--border); margin-bottom:15px;">
                         <h4 style="color:var(--primary); font-size:0.9rem; margin-bottom:8px;"><i class="fas fa-wallet"></i> Official Agency Payment Channels</h4>
@@ -385,6 +393,15 @@
                         </div>
                     </div>
 
+                    <!-- Client Document & Secure Cloud Vault Downloads -->
+                    <div style="background:rgba(0,0,0,0.25); padding:15px; border-radius:20px; border:1px solid var(--border); margin-bottom:15px;">
+                        <h4 style="color:var(--primary); font-size:0.85rem; margin-bottom:8px;"><i class="fas fa-cloud-download-alt"></i> Secure Cloud Document Vault</h4>
+                        <p style="font-size:0.7rem; opacity:0.8; margin-bottom:8px;">Download your assigned contracts, design briefs, or project deliverables:</p>
+                        <div id="clientVaultContainer" style="font-size:0.75rem;">
+                            <p style="opacity:0.6;">No custom documents assigned yet.</p>
+                        </div>
+                    </div>
+
                     <!-- Project Completion & Delivery Hub -->
                     <div style="background:rgba(0,0,0,0.25); padding:15px; border-radius:20px; border:1px solid var(--border); margin-bottom:15px;">
                         <h4 id="clientProjectTitle" style="color:var(--primary); font-size:0.95rem; margin-bottom:10px;">Custom Enterprise Web Architecture</h4>
@@ -410,11 +427,16 @@
                         </div>
                     </div>
 
-                    <!-- Client Support Ticket Box -->
+                    <!-- Client Support Ticket Box with Live Tracking -->
                     <div style="background:rgba(0,0,0,0.25); padding:15px; border-radius:20px; border:1px solid var(--border); margin-bottom:15px;">
-                        <h4 style="color:var(--primary); font-size:0.85rem; margin-bottom:8px;"><i class="fas fa-ticket-alt"></i> Raise Support Ticket / Bug Fix</h4>
-                        <input type="text" id="clientTicketInput" class="auth-input" placeholder="Describe issue or request..." style="margin-bottom:8px;">
-                        <button class="btn-action" style="margin-top:0; padding:10px;" onclick="submitClientTicket()">Submit Ticket to Admin</button>
+                        <h4 style="color:var(--primary); font-size:0.85rem; margin-bottom:8px;"><i class="fas fa-ticket-alt"></i> Raise & Track Support Tickets</h4>
+                        <input type="text" id="clientTicketInput" class="auth-input" placeholder="Describe bug fix or request..." style="margin-bottom:8px;">
+                        <button class="btn-action" style="margin-top:0; padding:10px; margin-bottom:10px;" onclick="submitClientTicket()">Submit Ticket to Admin</button>
+                        
+                        <h5 style="font-size:0.75rem; color:var(--gold); margin-bottom:6px;">Your Ticket Status History:</h5>
+                        <div id="clientTicketsListContainer" style="max-height: 100px; overflow-y: auto; font-size: 0.7rem;">
+                            <p style="opacity:0.6;">No active tickets.</p>
+                        </div>
                     </div>
 
                     <!-- Maintenance Tier Selector -->
@@ -614,7 +636,7 @@
             
             <!-- Analytics Overview -->
             <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:15px; margin-bottom:15px; border:1px solid var(--primary);">
-                <h4 style="font-size:0.85rem; margin-bottom:10px; color:var(--primary);"><i class="fas fa-chart-line"></i> Live Agency Statistics</h4>
+                <h4 style="font-size:0.85rem; margin-bottom:10px; color:var(--primary);"><i class="fas fa-chart-line"></i> Live Agency Statistics & Financial Graph</h4>
                 <div style="display:flex; justify-content:space-between; font-size:0.75rem; text-align:center;">
                     <div style="background:rgba(255,255,255,0.04); padding:10px; border-radius:10px; width:32%;">
                         <span style="opacity:0.6;">Total Visitors</span><br><strong id="analyticsVisitorCount" style="color:var(--primary); font-size:0.9rem;">0</strong>
@@ -623,7 +645,7 @@
                         <span style="opacity:0.6;">Active Clients</span><br><strong id="analyticsProjectCount" style="color:var(--gold); font-size:0.9rem;">0</strong>
                     </div>
                     <div style="background:rgba(255,255,255,0.04); padding:10px; border-radius:10px; width:32%;">
-                        <span style="opacity:0.6;">Est. Agency Rev</span><br><strong id="analyticsAccent" style="color:var(--accent); font-size:0.9rem;">$12.4k+</strong>
+                        <span style="opacity:0.6;">Est. Agency Rev</span><br><strong id="analyticsAccent" style="color:var(--accent); font-size:0.9rem;">$15.2k+</strong>
                     </div>
                 </div>
             </div>
@@ -641,6 +663,15 @@
                 <div id="adminPaymentProofsContainer" style="max-height: 150px; overflow-y: auto; font-size: 0.75rem;">
                     <p style="opacity: 0.6;">Loading payment proofs...</p>
                 </div>
+            </div>
+
+            <!-- Client Secure Document Uploader (Admin Side) -->
+            <div style="background:rgba(0,0,0,0.3); padding:15px; border-radius:15px; margin-bottom:15px; border:1px solid var(--border);">
+                <h4 style="font-size:0.85rem; margin-bottom:8px; color:var(--primary);"><i class="fas fa-cloud-upload-alt"></i> Assign Secure Document to Client Vault</h4>
+                <input type="text" id="adminDocClientUid" class="auth-input" placeholder="Client UID">
+                <input type="text" id="adminDocTitle" class="auth-input" placeholder="Document / Contract Title">
+                <input type="text" id="adminDocUrl" class="auth-input" placeholder="Download File URL / Link">
+                <button class="btn-action" style="margin-top:0; padding:10px;" onclick="adminUploadClientDocument()">Upload to Vault</button>
             </div>
 
             <!-- Dynamic Portfolio Manager -->
@@ -814,6 +845,13 @@
             document.getElementById('quote-display').innerText = currentCostVal;
         }
 
+        function copyReferralLink() {
+            const linkInput = document.getElementById('clientReferralLink');
+            linkInput.select();
+            navigator.clipboard.writeText(linkInput.value);
+            showToast("Referral link copied to clipboard!");
+        }
+
         async function submitPaymentProof() {
             const user = window.auth.currentUser;
             if(!user) {
@@ -867,12 +905,44 @@
 
         async function submitClientTicket() {
             const ticket = document.getElementById('clientTicketInput').value.trim();
+            const user = window.auth.currentUser;
+            if(!user) {
+                showToast("Please sign in to raise a ticket.");
+                return;
+            }
             if(ticket) {
-                showToast("Support ticket submitted to Muhammad Nazim successfully!");
-                document.getElementById('clientTicketInput').value = "";
+                try {
+                    await window.addDoc(window.collection(window.db, "agency_tickets"), {
+                        uid: user.uid,
+                        email: user.email,
+                        ticket,
+                        status: "Open 🟡",
+                        timestamp: window.serverTimestamp()
+                    });
+                    showToast("Support ticket raised successfully!");
+                    document.getElementById('clientTicketInput').value = "";
+                    loadClientTickets(user.uid);
+                } catch(e) {
+                    showToast("Failed to raise ticket.");
+                }
             } else {
                 showToast("Please enter ticket description.");
             }
+        }
+
+        async function loadClientTickets(uid) {
+            try {
+                const q = window.query(window.collection(window.db, "agency_tickets"), window.where("uid", "==", uid));
+                const snap = await window.getDocs(q);
+                let html = '';
+                snap.forEach(d => {
+                    const data = d.data();
+                    html += `<div style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <strong>Ticket:</strong> ${data.ticket}<br><small style="opacity:0.7;">Status: <span style="color:var(--primary);">${data.status}</span></small>
+                    </div>`;
+                });
+                document.getElementById('clientTicketsListContainer').innerHTML = html || '<p style="opacity:0.6;">No active tickets.</p>';
+            } catch(e) { console.error(e); }
         }
 
         async function subscribeMaintenanceTier() {
@@ -1000,7 +1070,7 @@
                             'Authorization': `Bearer ${apiKey}`
                         },
                         body: JSON.stringify({
-                            model: "openai/gpt-oss-120b",
+                            model: "llama-3.3-70b-versatile",
                             messages: [
                                 { 
                                     role: "system", 
@@ -1025,6 +1095,7 @@
                     });
 
                 } catch(e) {
+                    console.error(e);
                     showToast("AI response failed to load.");
                 }
             }
@@ -1195,6 +1266,45 @@
                 }
             } catch(e) { showToast("Failed to remove item."); }
         }
+
+        async function adminUploadClientDocument() {
+            const clientUid = document.getElementById('adminDocClientUid').value.trim();
+            const title = document.getElementById('adminDocTitle').value.trim();
+            const url = document.getElementById('adminDocUrl').value.trim();
+
+            if(clientUid && title && url) {
+                try {
+                    await window.addDoc(window.collection(window.db, "agency_vault"), {
+                        clientUid, title, url,
+                        timestamp: window.serverTimestamp()
+                    });
+                    showToast("Document successfully assigned to client vault!");
+                    document.getElementById('adminDocClientUid').value = "";
+                    document.getElementById('adminDocTitle').value = "";
+                    document.getElementById('adminDocUrl').value = "";
+                } catch(e) {
+                    showToast("Failed to upload document.");
+                }
+            } else {
+                showToast("Please fill all vault fields.");
+            }
+        }
+
+        async function loadClientVault(uid) {
+            try {
+                const q = window.query(window.collection(window.db, "agency_vault"), window.where("clientUid", "==", uid));
+                const snap = await window.getDocs(q);
+                let html = '';
+                snap.forEach(d => {
+                    const data = d.data();
+                    html += `<div style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items:center;">
+                        <span><i class="fas fa-file-pdf" style="color:var(--primary);"></i> ${data.title}</span>
+                        <a href="${data.url}" target="_blank" class="filter-btn" style="background:var(--primary); color:#000; padding:4px 8px; text-decoration:none;">Download</a>
+                    </div>`;
+                });
+                document.getElementById('clientVaultContainer').innerHTML = html || '<p style="opacity:0.6;">No custom documents assigned yet.</p>';
+            } catch(e) { console.error(e); }
+        }
         
         async function adminUpdateMilestone(uid) {
             const newProject = prompt("Enter new Project Title:");
@@ -1360,6 +1470,10 @@
                     document.getElementById('loggedInView').style.display = 'block';
                     document.getElementById('clientEmailDisplay').innerText = user.email;
                     document.getElementById('clientAvatarInitial').innerText = user.email ? user.email.charAt(0).toUpperCase() : 'U';
+                    document.getElementById('clientReferralLink').value = `https://web-hub-code.github.io/primesolutions/?ref=${user.uid}`;
+
+                    loadClientVault(user.uid);
+                    loadClientTickets(user.uid);
 
                     try {
                         const userDoc = await window.getDoc(window.doc(window.db, "agency_users", user.uid));
@@ -1409,7 +1523,7 @@
                     count++;
                     const data = docSnap.data();
                     html += `<div class="user-row-admin">
-                        <span><strong>${data.email || 'N/A'}</strong><br><small style="opacity:0.7;">Project: ${data.assignedProject || 'Standard'}</small></span>
+                        <span><strong>${data.email || 'N/A'}</strong><br><small style="opacity:0.7;">UID: ${docSnap.id}</small></span>
                         <div>
                             <button class="filter-btn" style="padding:4px 8px; font-size:0.65rem; background:var(--primary); color:#000;" onclick="adminUpdateMilestone('${docSnap.id}')">Manage Completion</button>
                             <button class="filter-btn" style="padding:4px 8px; font-size:0.65rem; background:#ff4757; color:#fff;" onclick="adminDeleteUser('${docSnap.id}')">Remove</button>
