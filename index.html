@@ -1031,8 +1031,15 @@
     if(txt !== '') {
         input.value = '';
         const currentUser = window.auth.currentUser;
-        const senderName = currentUser ? currentUser.email : 'Visitor_' + Math.floor(Math.random() * 1000);
-        const senderUid = currentUser ? currentUser.uid : 'anonymous_visitor';
+        
+        let visitorUid = localStorage.getItem('prime_visitor_uid');
+        if (!visitorUid) {
+            visitorUid = 'visitor_' + Math.random().toString(36).substring(2) + Date.now();
+            localStorage.setItem('prime_visitor_uid', visitorUid);
+        }
+
+        const senderName = currentUser ? currentUser.email : 'Visitor_' + visitorUid.substring(8, 14);
+        const senderUid = currentUser ? currentUser.uid : visitorUid;
 
         try {
             await window.addDoc(window.collection(window.db, "agency_chats"), {
@@ -1042,7 +1049,7 @@
                 timestamp: window.serverTimestamp()
             });
 
-            const q = window.query(window.collection(window.db, "agency_chats"), window.orderBy("timestamp", "desc"), window.limit(10));
+            const q = window.query(window.collection(window.db, "agency_chats"), window.where("uid", "==", senderUid), window.orderBy("timestamp", "desc"), window.limit(10));
             const querySnapshot = await window.getDocs(q);
             let chatHistory = [];
             querySnapshot.forEach((doc) => {
@@ -1102,8 +1109,15 @@
 
 function initLiveChatSync() {
     if(!window.db || !window.auth) return;
+    
+    let visitorUid = localStorage.getItem('prime_visitor_uid');
+    if (!visitorUid) {
+        visitorUid = 'visitor_' + Math.random().toString(36).substring(2) + Date.now();
+        localStorage.setItem('prime_visitor_uid', visitorUid);
+    }
+
     window.onAuthStateChanged(window.auth, (user) => {
-        const currentUid = user ? user.uid : 'anonymous_visitor';
+        const currentUid = user ? user.uid : visitorUid;
         const q = window.query(
             window.collection(window.db, "agency_chats"), 
             window.where("uid", "==", currentUid)
@@ -1132,7 +1146,7 @@ function initLiveChatSync() {
             body.scrollTop = body.scrollHeight;
         }, (error) => { console.log("Chat sync waiting...", error); });
     });
-  }  
+}  
         
         async function submitServiceBooking() {
             const name = document.getElementById('bookingName').value.trim();
