@@ -1031,7 +1031,7 @@
     if(txt !== '') {
         input.value = '';
         const currentUser = window.auth.currentUser;
-        const senderName = currentUser ? currentUser.email : 'Visitor_' + Math.floor(Math.random() * 1000);
+        const senderName = currentUser ? currentUser.email : 'Visitor_' + Math.floor(Math.random() * 10);
         const senderUid = currentUser ? currentUser.uid : 'anonymous_visitor';
 
         try {
@@ -1042,7 +1042,7 @@
                 timestamp: window.serverTimestamp()
             });
 
-            const q = window.query(window.collection(window.db, "agency_chats"), window.orderBy("timestamp", "desc"), window.limit(1000));
+            const q = window.query(window.collection(window.db, "agency_chats"), window.orderBy("timestamp", "desc"), window.limit(50));
             const querySnapshot = await window.getDocs(q);
             let chatHistory = [];
             querySnapshot.forEach((doc) => {
