@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <!-- Firebase SDKs Integration -->
     <script type="module">
@@ -152,7 +153,8 @@
         .timeline-item.completed::before { background: var(--primary); box-shadow: 0 0 10px var(--primary); }
         .timeline-item.completed { color: var(--primary); font-weight: bold; }
 
-        .payment-gateways-row { display: flex; justify-content: center; gap: 15px; margin-top: 15px; opacity: 0.75; font-size: 1.2rem; align-items: center; }
+        .payment-gateways-row { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 0.8rem; }
+        .pay-box { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 10px 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; }
 
         .whatsapp-float { position: fixed; bottom: 100px; left: 20px; background: var(--whatsapp); color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.6rem; box-shadow: 0 5px 20px rgba(37,211,102,0.4); cursor: pointer; z-index: 9998; transition: 0.3s; text-decoration: none; animation: pulseWhatsapp 2s infinite; }
         @keyframes pulseWhatsapp { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
@@ -225,9 +227,9 @@
         <header class="agency-header" data-aos="zoom-in">
             <!-- Trust & Security Seals -->
             <div class="trust-badges-row">
-                <span class="trust-badge"><i class="fas fa-shield-alt"></i> 256-Bit SSL Encrypted</span>
-                <span class="trust-badge"><i class="fas fa-certificate"></i> ISO Certified Enterprise</span>
-                <span class="trust-badge"><i class="fas fa-check-circle"></i> Verified Agency</span>
+                <span class="trust-badge"><i class="fas fa-gift"></i> Free Demos & Free Quotes[span_0](start_span)[span_0](end_span)</span>
+                <span class="trust-badge"><i class="fas fa-percent"></i> Market Se Kam Prices[span_1](start_span)[span_1](end_span)</span>
+                <span class="trust-badge"><i class="fas fa-shield-alt"></i> Secure Payment Gateway</span>
             </div>
 
             <img src="Screenshot_2026-04-12-10-02-54-39.png" class="pfp-ceo" id="eagleLogo" alt="Muhammad Nazim CEO of Prime Solutions">
@@ -257,7 +259,7 @@
                 <span class="tag-badge">EXECUTIVE STATEMENT</span>
                 <h2 style="color:var(--primary); margin-bottom:15px; font-size: 1.5rem;">Leading the Digital Frontier</h2>
                 <p id="txt-vision-desc" style="font-size: 0.85rem; opacity: 0.75; line-height: 1.8; margin-bottom: 15px;">
-                    Under the leadership of <strong>Muhammad Nazim</strong>, Prime Solutions has emerged as a premier <strong>Global IT Enterprise Agency</strong>. We specialize in building high-performance <strong>custom web architectures</strong>, AI-integrated systems, and scalable digital products for modern businesses.
+                    Under the leadership of <strong>Muhammad Nazim</strong>, Prime Solutions has emerged as a premier <strong>Global IT Enterprise Agency</strong>. We specialize in building high-performance <strong>custom web architectures</strong>, AI-integrated systems, and scalable digital products with market-beat pricing, free quotes, and secure payment verification[span_2](start_span)[span_2](end_span).
                 </p>
                 <a href="https://chat.whatsapp.com/D6QqMvZFBqLE4Hu4MsYEL5?s=cl&p=a&ilr=1" target="_blank" class="btn-action" style="background:var(--whatsapp); color:#fff;"><i class="fab fa-whatsapp"></i> Join Official WhatsApp Group</a>
                 <a href="https://wa.me/923379827882" class="btn-action">Direct Strategy Call <i class="fab fa-whatsapp"></i></a>
@@ -282,7 +284,7 @@
                         <strong>Alexander Vance (USA)</strong>
                         <span style="color:var(--gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
                     </div>
-                    <p style="font-size:0.75rem; opacity:0.7;">"Muhammad Nazim and Prime Solutions delivered an incredible fintech platform with flawless UI and robust Firebase backend."</p>
+                    <p style="font-size:0.75rem; opacity:0.7;">"Easy payment verification system and smooth project delivery through Payoneer and Sadapay!"</p>
                 </div>
 
                 <div class="testimonial-card">
@@ -290,7 +292,7 @@
                         <strong>Tariq Mahmood (UAE)</strong>
                         <span style="color:var(--gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
                     </div>
-                    <p style="font-size:0.75rem; opacity:0.7;">"Super fast delivery and great AI chatbot integration. Highly professional IT enterprise service!"</p>
+                    <p style="font-size:0.75rem; opacity:0.7;">"Market se kam rates aur bohot hi asaan payment submission process!"</p>
                 </div>
             </div>
 
@@ -301,14 +303,14 @@
                     <input type="text" id="faqSearchInput" placeholder="Search FAQ..." onkeyup="filterFaq()" style="width:140px; padding:6px 10px; font-size:0.7rem; margin-bottom:0;" class="auth-input">
                 </div>
                 
-                <div class="faq-item" data-question="how long project take">
-                    <div class="faq-question" onclick="toggleFaq(this)">How long does a custom web project take? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">Most enterprise web architectures and portals are successfully deployed within 1 to 3 weeks depending on functional complexity.</div>
+                <div class="faq-item" data-question="how to submit payment proof">
+                    <div class="faq-question" onclick="toggleFaq(this)">How do I submit payment proof? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Log in to your client portal, select your payment method, enter your username and TID number, attach your screenshot, and submit. Status will show as Pending until admin approves.</div>
                 </div>
 
-                <div class="faq-item" data-question="join official community">
-                    <div class="faq-question" onclick="toggleFaq(this)">How can I join the official community? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">You can click the WhatsApp floating button or the join group CTA button on this page to enter our official WhatsApp group instantly.</div>
+                <div class="faq-item" data-question="are quotes and demos free">
+                    <div class="faq-question" onclick="toggleFaq(this)">Are quotes and demos free? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Yes, all project consultations, demos, and estimates are 100% free with market-beat affordable pricing[span_3](start_span)[span_3](end_span).</div>
                 </div>
 
                 <div class="faq-item" data-question="who leads prime solutions ceo">
@@ -318,11 +320,11 @@
             </div>
         </section>
 
-        <!-- Advanced Client Portal with Support Tickets, Maintenance Tiers & E-Signing -->
+        <!-- Advanced Client Portal with Payment Proof Submission & Verification -->
         <section id="pane-auth" class="view-pane">
             <div class="feature-card" data-aos="fade-up">
-                <h2 style="font-size: 1.4rem; margin-bottom: 5px;">Client Hub & Profile</h2>
-                <p style="font-size: 0.75rem; opacity: 0.6; margin-bottom: 20px;">Sign in to view your profile and tracking timeline.</p>
+                <h2 style="font-size: 1.4rem; margin-bottom: 5px;">Client Hub & Payments</h2>
+                <p style="font-size: 0.75rem; opacity: 0.6; margin-bottom: 20px;">Sign in to view your profile, submit payment proofs, and track project completion.</p>
                 
                 <div id="loggedOutView">
                     <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; border-radius: 20px;">
@@ -354,13 +356,56 @@
                         <strong style="color:var(--primary);"><i class="fas fa-bullhorn"></i> Notice from CEO:</strong> <span id="clientBroadcastText"></span>
                     </div>
 
+                    <!-- Official Agency Payment Methods Info Box -->
+                    <div style="background:rgba(0,0,0,0.25); padding:15px; border-radius:20px; border:1px solid var(--border); margin-bottom:15px;">
+                        <h4 style="color:var(--primary); font-size:0.9rem; margin-bottom:8px;"><i class="fas fa-wallet"></i> Official Agency Payment Channels</h4>
+                        <div class="payment-gateways-row">
+                            <div class="pay-box"><span><i class="fas fa-mobile-alt" style="color:var(--whatsapp);"></i> Easypaisa</span> <strong>03379827882</strong></div>
+                            <div class="pay-box"><span><i class="fas fa-mobile-alt" style="color:var(--gold);"></i> JazzCash</span> <strong>03705519562</strong></div>
+                            <div class="pay-box"><span><i class="fas fa-credit-card" style="color:var(--primary);"></i> Sadapay</span> <strong>03705519562</strong></div>
+                            <div class="pay-box"><span><i class="fas fa-globe" style="color:var(--accent);"></i> Payoneer (Intl)</span> <strong>96803384</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Payment Proof Form -->
+                    <div style="background:rgba(0,0,0,0.2); padding:15px; border-radius:20px; border:1px solid var(--border); margin-bottom:15px;">
+                        <h4 style="color:var(--gold); font-size:0.85rem; margin-bottom:8px;"><i class="fas fa-file-invoice-dollar"></i> Submit Payment Proof (Pending Admin Approval)</h4>
+                        
+                        <select id="payMethodSelect" class="auth-select" style="margin-bottom:8px;">
+                            <option value="Easypaisa (03379827882)">Easypaisa (03379827882)</option>
+                            <option value="JazzCash (03705519562)">JazzCash (03705519562)</option>
+                            <option value="Sadapay (03705519562)">Sadapay (03705519562)</option>
+                            <option value="Payoneer International (96803384)">Payoneer International (96803384)</option>
+                        </select>
+                        
+                        <input type="text" id="payUsernameInput" class="auth-input" placeholder="Your Account Username / Sender Name" style="margin-bottom:8px;">
+                        <input type="text" id="payTidInput" class="auth-input" placeholder="Transaction TID / Reference Number" style="margin-bottom:8px;">
+                        
+                        <label style="font-size:0.7rem; opacity:0.7; display:block; margin-bottom:4px;">Upload Screenshot Proof:</label>
+                        <input type="file" id="payProofFile" class="auth-input" accept="image/*" style="margin-bottom:8px; padding:8px;">
+                        
+                        <button class="btn-action" style="margin-top:0; padding:10px;" onclick="submitPaymentProof()">Submit Proof (Status: Pending)</button>
+                        
+                        <div id="paymentStatusDisplay" style="margin-top:10px; font-size:0.75rem; text-align:center; padding:8px; border-radius:10px; background:rgba(255,255,255,0.03); display:none;">
+                            Current Payment Status: <strong id="payStatusBadge" style="color:var(--gold);">Pending Admin Review</strong>
+                        </div>
+                    </div>
+
+                    <!-- Project Completion & Delivery Hub -->
                     <div style="background:rgba(0,0,0,0.2); padding:15px; border-radius:20px; border:1px solid var(--border); margin-bottom:15px;">
                         <h4 id="clientProjectTitle" style="color:var(--primary); font-size:0.95rem; margin-bottom:10px;">Custom Enterprise Web Architecture</h4>
-                        <p style="font-size:0.75rem; opacity:0.7; margin-bottom:8px;">Current Phase: <strong id="clientCurrentPhase" style="color:var(--primary);">Phase 2: Frontend Architecture & Firebase Core</strong></p>
+                        <p style="font-size:0.75rem; opacity:0.7; margin-bottom:8px;">Current Status / Phase: <strong id="clientCurrentPhase" style="color:var(--primary);">Phase 2: Frontend Architecture & Firebase Core</strong></p>
                         
                         <!-- Visual Progress Bar -->
                         <div style="width:100%; background:rgba(255,255,255,0.05); height:8px; border-radius:4px; margin-bottom:12px; overflow:hidden;">
                             <div id="clientProgressBar" style="width:65%; background:linear-gradient(90deg,var(--primary),var(--secondary)); height:100%; transition: width 0.5s;"></div>
+                        </div>
+
+                        <!-- Completion celebration notification box inside portal -->
+                        <div id="projectCompleteCelebrationBox" style="display:none; background:rgba(37,211,102,0.15); border:1px solid var(--whatsapp); padding:12px; border-radius:15px; margin-bottom:12px; text-align:center;">
+                            <h4 style="color:var(--whatsapp); font-size:0.9rem; margin-bottom:4px;"><i class="fas fa-check-circle"></i> Project Completed Successfully! 🎉</h4>
+                            <p style="font-size:0.7rem; opacity:0.8; margin-bottom:8px;">Aapka project mukammal ho chuka hai. Neeche diye gaye link se live check ya download karein.</p>
+                            <a id="clientFinalProjectLink" href="#" target="_blank" class="btn-action" style="background:var(--whatsapp); color:#fff; padding:10px; margin-top:0;"><i class="fas fa-external-link-alt"></i> Access Completed Project</a>
                         </div>
 
                         <div class="timeline">
@@ -448,7 +493,8 @@
         <section id="pane-calculator" class="view-pane">
             <div class="feature-card" data-aos="fade-up">
                 <h2 style="font-size: 1.4rem; margin-bottom: 5px;">Project Value Estimator</h2>
-                <p style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 15px;">Instant AI-calculated baseline with PDF quote generation.</p>
+                <p style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 5px;">Market se kam prices | 100% Free Quotes & Free Demos[span_4](start_span)[span_4](end_span).</p>
+                <p style="font-size: 0.65rem; color:var(--primary); margin-bottom: 15px;">*Exact pricing depends on client project requirements & scope.</p>
                 
                 <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
                     <button class="filter-btn active" onclick="setCurrency('USD', 2500, '$', this)">USD ($)</button>
@@ -456,25 +502,24 @@
                 </div>
 
                 <div style="background:rgba(0,242,254,0.05); border:1px dashed var(--primary); padding:25px; border-radius:20px; text-align:center; margin-bottom:15px;">
-                    <p style="font-size: 0.6rem; letter-spacing: 2px; opacity: 0.5;">ESTIMATED STARTING COST</p>
+                    <p style="font-size: 0.6rem; letter-spacing: 2px; opacity: 0.5;">ESTIMATED STARTING COST (FREE QUOTE)</p>
                     <p id="quote-display" style="font-size:2rem; font-weight:800; color:var(--primary);">$2,500.00</p>
                 </div>
                 
-                <button class="btn-action" onclick="generatePDFInvoice()"><i class="fas fa-file-pdf"></i> Download Official PDF Quote</button>
+                <button class="btn-action" onclick="generatePDFInvoice()"><i class="fas fa-file-pdf"></i> Download Free Official PDF Quote[span_5](start_span)[span_5](end_span)</button>
 
-                <div class="payment-gateways-row">
-                    <i class="fab fa-cc-stripe" title="Stripe"></i>
-                    <i class="fab fa-cc-paypal" title="PayPal"></i>
-                    <i class="fas fa-university" title="Wire Transfer"></i>
-                    <span style="font-size:0.75rem; font-weight:bold; color:var(--primary);">JazzCash / EasyPaisa</span>
+                <div class="payment-gateways-row" style="flex-direction:row; justify-content:center; gap:15px; font-size:1.2rem;">
+                    <i class="fas fa-wallet" title="Easypaisa & JazzCash"></i>
+                    <i class="fas fa-credit-card" title="Sadapay"></i>
+                    <i class="fas fa-globe" title="Payoneer International"></i>
                 </div>
             </div>
         </section>
 
         <section id="pane-booking" class="view-pane">
             <div class="feature-card" data-aos="fade-up">
-                <h2 style="font-size: 1.4rem; margin-bottom: 5px;"><i class="fas fa-calendar-check"></i> Service Booking</h2>
-                <p style="font-size: 0.75rem; opacity: 0.6; margin-bottom: 20px;">Schedule your consultation or custom project consultation directly with our agency.</p>
+                <h2 style="font-size: 1.4rem; margin-bottom: 5px;"><i class="fas fa-calendar-check"></i> Free Demo & Service Booking</h2>
+                <p style="font-size: 0.75rem; opacity: 0.6; margin-bottom: 20px;">Book your free project demo and consultation. Market se kam affordable rates[span_6](start_span)[span_6](end_span).</p>
                 
                 <input type="text" id="bookingName" class="auth-input" placeholder="Your Full Name">
                 <input type="email" id="bookingEmail" class="auth-input" placeholder="Email Address">
@@ -485,9 +530,9 @@
                     <option value="Mobile PWA Development">Mobile PWA Development</option>
                 </select>
                 <input type="date" id="bookingDate" class="auth-input">
-                <textarea id="bookingNotes" class="auth-input" placeholder="Project details or special requirements..." style="height:80px; resize:none;"></textarea>
+                <textarea id="bookingNotes" class="auth-input" placeholder="Project details or special requirements for free quote..." style="height:80px; resize:none;"></textarea>
                 
-                <button class="btn-action" onclick="submitServiceBooking()">Confirm Appointment Booking</button>
+                <button class="btn-action" onclick="submitServiceBooking()">Book Free Demo & Consultation</button>
             </div>
         </section>
 
@@ -506,7 +551,7 @@
                 <div class="contact-info">
                     <i class="fab fa-whatsapp"></i>
                     <div>
-                        <p style="font-size:0.6rem; opacity:0.5;">WHATSAPP SUPPORT</p>
+                        <p style="font-size:0.6rem; opacity:0.5;">WHATSAPP SUPPORT (FREE DEMO)</p>
                         <a href="https://wa.me/923379827882" style="color:var(--text-color); text-decoration:none; font-weight:600;">0337 9827882</a>
                     </div>
                 </div>
@@ -542,7 +587,7 @@
             <i class="fas fa-times" style="cursor:pointer;" onclick="toggleChatPopup()"></i>
         </div>
         <div class="chat-body" id="chatBody">
-            <p style="opacity: 0.8; background:rgba(255,255,255,0.05); padding:8px 12px; border-radius:12px; font-size:0.75rem;">Hello! 👋 I am Prime AI. Ask me about pricing or services!</p>
+            <p style="opacity: 0.8; background:rgba(255,255,255,0.05); padding:8px 12px; border-radius:12px; font-size:0.75rem;">Hello! 👋 I am Prime AI. Ask me about our payment proofs, free demos, or custom pricing!</p>
         </div>
         <div class="chat-footer">
             <label style="cursor:pointer; color:var(--primary); font-size:0.9rem;" title="Attach File/Image">
@@ -596,6 +641,14 @@
                 <button class="btn-action" style="margin-top:0; padding:10px;" onclick="sendBroadcastNotice()">Send Global Notice</button>
             </div>
 
+            <!-- Payment Proofs Approval Management CRM -->
+            <div style="background:rgba(0,0,0,0.3); padding:15px; border-radius:15px; margin-bottom:15px; border:1px solid var(--border);">
+                <h4 style="font-size:0.85rem; margin-bottom:8px; color:var(--gold);"><i class="fas fa-receipt"></i> Client Payment Proofs Verification Queue</h4>
+                <div id="adminPaymentProofsContainer" style="max-height: 150px; overflow-y: auto; font-size: 0.75rem;">
+                    <p style="opacity: 0.5;">Loading payment proofs...</p>
+                </div>
+            </div>
+
             <!-- Dynamic Portfolio Manager -->
             <div style="background:rgba(0,0,0,0.3); padding:15px; border-radius:15px; margin-bottom:15px; border:1px solid var(--border);">
                 <h4 style="font-size:0.85rem; margin-bottom:8px; color:var(--primary);"><i class="fas fa-folder-plus"></i> Portfolio Manager (Add/Remove Live)</h4>
@@ -618,9 +671,12 @@
                 </div>
             </div>
 
-            <!-- Direct Admin-Client Chat & Messages Manager -->
+            <!-- Direct Admin-Client Chat & Messages Manager with Clear Option -->
             <div style="background:rgba(0,0,0,0.3); padding:15px; border-radius:15px; margin-bottom:15px; border:1px solid var(--border);">
-                <h4 style="font-size:0.85rem; margin-bottom:8px; color:var(--primary);"><i class="fas fa-comments"></i> Live Client Chat & Message Center</h4>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <h4 style="font-size:0.85rem; color:var(--primary);"><i class="fas fa-comments"></i> Live Client Chat & Message Center</h4>
+                    <button class="filter-btn" style="background:#ff4757; color:#fff; padding:4px 8px; font-size:0.65rem;" onclick="adminClearAllChats()">Clear All Chats</button>
+                </div>
                 <div id="adminChatLogsContainer" style="max-height: 140px; overflow-y: auto; font-size: 0.75rem; background:rgba(0,0,0,0.2); padding:10px; border-radius:10px; margin-bottom:10px;">
                     <p style="opacity:0.5;">Loading client chats...</p>
                 </div>
@@ -650,6 +706,13 @@
     <script>
         AOS.init({ duration: 800, once: true });
         
+        // Unique Visitor UID for unauthenticated users
+        let visitorUid = localStorage.getItem('prime_visitor_uid');
+        if (!visitorUid) {
+            visitorUid = 'visitor_' + Math.random().toString(36.substring(2)) + Date.now();
+            localStorage.setItem('prime_visitor_uid', visitorUid);
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('prime_theme');
             if (savedTheme === 'light') {
@@ -737,11 +800,11 @@
         const translations = {
             en: {
                 subtitle: "GLOBAL IT ENTERPRISE AGENCY",
-                vision: "Under the leadership of <strong>Muhammad Nazim</strong>, Prime Solutions has emerged as a premier <strong>Global IT Enterprise Agency</strong>. We specialize in building high-performance <strong>custom web architectures</strong>, AI-integrated systems, and scalable digital products for modern businesses."
+                vision: "Under the leadership of <strong>Muhammad Nazim</strong>, Prime Solutions has emerged as a premier <strong>Global IT Enterprise Agency</strong>. We specialize in building high-performance <strong>custom web architectures</strong>, AI-integrated systems, and scalable digital products with free quotes and market-beat pricing."
             },
             ur: {
                 subtitle: "عالمی آئی ٹی انٹرپرائز ایجنسی",
-                vision: "<strong>محمد ناظم</strong> کی قیادت میں، Prime Solutions ایک بہترین <strong>عالمی آئی ٹی ایجنسی</strong> کے طور پر ابھری ہے۔ ہم جدید کاروباری اداروں کے لیے ہائی پرفارمنس کسٹم ویب آرکیٹیکچر اور اے آئی سسٹمز تیار کرنے میں مہارت رکھتے ہیں۔"
+                vision: "<strong>محمد ناظم</strong> کی قیادت میں، Prime Solutions ایک بہترین <strong>عالمی آئی ٹی ایجنسی</strong> کے طور پر ابھری ہے۔ ہم فری کوٹس اور مارکیٹ سے کم قیمتوں پر کسٹم ویب سسٹمز تیار کرتے ہیں۔"
             }
         };
 
@@ -774,12 +837,64 @@
             });
         }
 
-        let currentCostVal = "$2,500.00 USD";
+        let currentCostVal = "$2,500.00 USD (Custom Quote Free)";
         function setCurrency(curr, val, symbol, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => { if(b.innerText.includes('$') || b.innerText.includes('₨')) b.classList.remove('active'); });
             btn.classList.add('active');
             currentCostVal = `${symbol}${val.toLocaleString()}.00 ${curr}`;
             document.getElementById('quote-display').innerText = currentCostVal;
+        }
+
+        // Submit Payment Proof Feature
+        async function submitPaymentProof() {
+            const user = window.auth.currentUser;
+            if(!user) {
+                showToast("Please sign in to submit payment proof.");
+                return;
+            }
+            const method = document.getElementById('payMethodSelect').value;
+            const username = document.getElementById('payUsernameInput').value.trim();
+            const tid = document.getElementById('payTidInput').value.trim();
+            const fileInput = document.getElementById('payProofFile');
+
+            if(username && tid) {
+                let proofData = "";
+                if(fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = async function(e) {
+                        proofData = e.target.result;
+                        await savePaymentToDb(method, username, tid, proofData, user);
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    await savePaymentToDb(method, username, tid, "", user);
+                }
+            } else {
+                showToast("Please enter username and TID number.");
+            }
+        }
+
+        async function savePaymentToDb(method, username, tid, proof, user) {
+            try {
+                await window.addDoc(window.collection(window.db, "agency_payments"), {
+                    uid: user.uid,
+                    email: user.email,
+                    method,
+                    username,
+                    tid,
+                    proof,
+                    status: "Pending",
+                    timestamp: window.serverTimestamp()
+                });
+                showToast("Payment proof submitted successfully! Status: Pending Admin Approval.");
+                document.getElementById('payUsernameInput').value = "";
+                document.getElementById('payTidInput').value = "";
+                document.getElementById('paymentStatusDisplay').style.display = 'block';
+                document.getElementById('payStatusBadge').innerText = "Pending Admin Review";
+                document.getElementById('payStatusBadge').style.color = "var(--gold)";
+            } catch(e) {
+                showToast("Failed to submit payment proof.");
+            }
         }
 
         async function submitClientTicket() {
@@ -819,21 +934,21 @@
             
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(12);
-            doc.text("Official Project Estimate & Invoice", 20, 40);
+            doc.text("Official Free Project Estimate & Quote", 20, 40);
             doc.text("CEO: Muhammad Nazim", 20, 48);
             
             doc.setDrawColor(0, 242, 254);
             doc.line(20, 55, 190, 55);
             
             doc.setFontSize(10);
-            doc.text("Description: Custom Enterprise Web Architecture & AI Integration", 20, 70);
-            doc.text("Estimated Starting Cost: " + currentCostVal, 20, 80);
+            doc.text("Description: Custom Enterprise Web Architecture & Free Demo", 20, 70);
+            doc.text("Estimated Cost (Based on Project Scope): " + currentCostVal, 20, 80);
             doc.text("Date: " + new Date().toLocaleDateString(), 20, 90);
-            doc.text("Status: Verified & Approved Baseline", 20, 100);
+            doc.text("Status: 100% Free Consultation & Quote", 20, 100);
             
             doc.text("Thank you for choosing Prime Solutions!", 20, 130);
-            doc.save("Prime_Solutions_Quote.pdf");
-            showToast("PDF Quote Downloaded Successfully!");
+            doc.save("Prime_Solutions_Free_Quote.pdf");
+            showToast("Free PDF Quote Downloaded Successfully!");
         }
 
         function toggleChatPopup() {
@@ -853,7 +968,7 @@
                     const fileBase64 = e.target.result;
                     const currentUser = window.auth.currentUser;
                     const senderName = currentUser ? currentUser.email : 'Visitor';
-                    const senderUid = currentUser ? currentUser.uid : 'anonymous_visitor';
+                    const senderUid = currentUser ? currentUser.uid : visitorUid;
 
                     try {
                         await window.addDoc(window.collection(window.db, "agency_chats"), {
@@ -878,8 +993,8 @@
             if(txt !== '') {
                 input.value = '';
                 const currentUser = window.auth.currentUser;
-                const senderName = currentUser ? currentUser.email : 'Visitor_' + Math.floor(Math.random() * 1000);
-                const senderUid = currentUser ? currentUser.uid : 'anonymous_visitor';
+                const senderName = currentUser ? currentUser.email : 'Visitor_' + visitorUid.substring(8, 14);
+                const senderUid = currentUser ? currentUser.uid : visitorUid;
 
                 try {
                     await window.addDoc(window.collection(window.db, "agency_chats"), {
@@ -889,7 +1004,7 @@
                         timestamp: window.serverTimestamp()
                     });
 
-                    const q = window.query(window.collection(window.db, "agency_chats"), window.orderBy("timestamp", "desc"), window.limit(5));
+                    const q = window.query(window.collection(window.db, "agency_chats"), window.where("uid", "==", senderUid), window.orderBy("timestamp", "desc"), window.limit(5));
                     const querySnapshot = await window.getDocs(q);
                     let chatHistory = [];
                     querySnapshot.forEach((doc) => {
@@ -900,7 +1015,7 @@
                         });
                     });
 
-                    if (txt.toLowerCase().includes("project") || txt.toLowerCase().includes("quote") || txt.toLowerCase().includes("price") || txt.toLowerCase().includes("web") || txt.toLowerCase().includes("app") || txt.toLowerCase().includes("demo")) {
+                    if (txt.toLowerCase().includes("project") || txt.toLowerCase().includes("quote") || txt.toLowerCase().includes("price") || txt.toLowerCase().includes("web") || txt.toLowerCase().includes("app") || txt.toLowerCase().includes("demo") || txt.toLowerCase().includes("payment")) {
                         await window.addDoc(window.collection(window.db, "agency_chats_leads"), {
                             lead_name: senderName,
                             lead_uid: senderUid,
@@ -921,7 +1036,7 @@
                             messages: [
                                 { 
                                     role: "system", 
-                                    content: "You are Zara, the elite prime AI assistant for 'Prime Solutions' (Global HQ: Karachi, Pakistan; Regional Office: Islamabad, Pakistan). Founder & CEO: Muhammad Nazim. Official Website: https://web-hub-code.github.io/primesolutions/ | Contact: 03379827882 (WhatsApp) | Email: webhub262@gmail.com. We operate as a worldwide registered LLC company offering custom web development, apps, and digital solutions with pricing ranging from PKR 5,000 to PKR 100,000+ depending on project requirements, plus we offer free demos and free quotes. When qualified leads show interest in services, gracefully capture their real name, email address, and WhatsApp number. Keep responses punchy, highly professional, welcoming, and concise (max 2-3 sentences). Do not use repetitive quick options or buttons text." 
+                                    content: "You are Zara, the elite prime AI assistant for 'Prime Solutions' (Global HQ: Karachi, Pakistan; Regional Office: Islamabad, Pakistan). Founder & CEO: Muhammad Nazim. Official Website: https://web-hub-code.github.io/primesolutions/ | Contact: 03379827882 (WhatsApp) | Email: webhub262@gmail.com. Official Payment Accounts: Easypaisa: 03379827882, JazzCash: 03705519562, Sadapay: 03705519562, Payoneer International: 96803384. Clients can submit payment proof with TID and username in their portal for admin approval. We offer custom web development with prices lower than market standards based on project scopes, plus 100% FREE demos and FREE quotes. Keep responses punchy, highly professional, welcoming, and concise (max 2-3 sentences)." 
                                 },
                                 ...chatHistory
                             ]
@@ -947,10 +1062,11 @@
             }
         }
 
+        // Live Chat Sync with strict UID isolation (no chat leaks between users/visitors)
         function initLiveChatSync() {
             if(!window.db || !window.auth) return;
             window.onAuthStateChanged(window.auth, (user) => {
-                const currentUid = user ? user.uid : 'anonymous_visitor';
+                const currentUid = user ? user.uid : visitorUid;
                 const q = window.query(
                     window.collection(window.db, "agency_chats"), 
                     window.where("uid", "==", currentUid)
@@ -958,7 +1074,7 @@
 
                 window.onSnapshot(q, (snapshot) => {
                     const body = document.getElementById('chatBody');
-                    let html = '<p style="opacity: 0.8; background:rgba(255,255,255,0.05); padding:8px 12px; border-radius:12px; font-size:0.75rem;">Hello! 👋 I am Prime AI. Ask me about pricing or services!</p>';
+                    let html = '<p style="opacity: 0.8; background:rgba(255,255,255,0.05); padding:8px 12px; border-radius:12px; font-size:0.75rem;">Hello! 👋 I am Prime AI. Ask me about our payment proofs, free quotes, or custom pricing!</p>';
                     
                     let docsArray = [];
                     snapshot.forEach((docSnap) => {
@@ -994,7 +1110,7 @@
                         name, email, service, date, notes,
                         timestamp: window.serverTimestamp()
                     });
-                    showToast("Appointment booking confirmed successfully!");
+                    showToast("Free Demo & Appointment booking confirmed successfully!");
                     document.getElementById('bookingName').value = "";
                     document.getElementById('bookingEmail').value = "";
                     document.getElementById('bookingDate').value = "";
@@ -1115,14 +1231,16 @@
         
         async function adminUpdateMilestone(uid) {
             const newProject = prompt("Enter new Project Title:");
-            const newPhase = prompt("Enter current Phase Description:");
+            const newPhase = prompt("Enter current Phase Description (Type 'Completed' or 100% for completion):");
+            const finalLink = prompt("Enter Completed Project Live URL (optional):", "https://");
             if(newProject && newPhase) {
                 try {
                     await window.setDoc(window.doc(window.db, "agency_users", uid), {
                         assignedProject: newProject,
-                        currentPhase: newPhase
+                        currentPhase: newPhase,
+                        completedUrl: finalLink || ""
                     }, { merge: true });
-                    showToast("Client milestone updated!");
+                    showToast("Client milestone and completion status updated!");
                     loadAdminData();
                 } catch(e) {
                     showToast("Failed to update milestone.");
@@ -1138,6 +1256,45 @@
                     loadAdminData();
                 } catch(e) {
                     showToast("Failed to delete record.");
+                }
+            }
+        }
+
+        // Admin Payment Approve / Reject Actions
+        async function adminApprovePayment(payId) {
+            try {
+                await window.setDoc(window.doc(window.db, "agency_payments", payId), {
+                    status: "Approved ✅"
+                }, { merge: true });
+                showToast("Payment proof approved successfully!");
+                loadAdminData();
+            } catch(e) { showToast("Failed to approve payment."); }
+        }
+
+        async function adminRejectPayment(payId) {
+            try {
+                await window.setDoc(window.doc(window.db, "agency_payments", payId), {
+                    status: "Rejected ❌"
+                }, { merge: true });
+                showToast("Payment proof rejected.");
+                loadAdminData();
+            } catch(e) { showToast("Failed to reject payment."); }
+        }
+
+        // Admin Clear All Chats Function
+        async function adminClearAllChats() {
+            if(confirm("Are you sure you want to clear all chat logs?")) {
+                try {
+                    const snap = await window.getDocs(window.collection(window.db, "agency_chats"));
+                    let batchPromises = [];
+                    snap.forEach(d => {
+                        batchPromises.push(window.deleteDoc(window.doc(window.db, "agency_chats", d.id)));
+                    });
+                    await Promise.all(batchPromises);
+                    showToast("All chat logs cleared successfully!");
+                    loadAdminData();
+                } catch(e) {
+                    showToast("Failed to clear chat logs.");
                 }
             }
         }
@@ -1181,6 +1338,7 @@
                         uid: user.uid,
                         assignedProject: 'Custom Enterprise Web Architecture',
                         currentPhase: 'Phase 2: Frontend Architecture & Firebase Core',
+                        completedUrl: '',
                         loginTime: window.serverTimestamp()
                     }, { merge: true });
                 }
@@ -1243,8 +1401,28 @@
                         if(userDoc.exists()) {
                             const data = userDoc.data();
                             if(data.assignedProject) document.getElementById('clientProjectTitle').innerText = data.assignedProject;
-                            if(data.currentPhase) document.getElementById('clientCurrentPhase').innerText = data.currentPhase;
+                            if(data.currentPhase) {
+                                document.getElementById('clientCurrentPhase').innerText = data.currentPhase;
+                                if(data.currentPhase.toLowerCase().includes('complet') || data.currentPhase.toLowerCase().includes('100%')) {
+                                    document.getElementById('projectCompleteCelebrationBox').style.display = 'block';
+                                    document.getElementById('clientProgressBar').style.width = '100%';
+                                    if(data.completedUrl) {
+                                        document.getElementById('clientFinalProjectLink').href = data.completedUrl;
+                                    }
+                                    confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
+                                }
+                            }
                         }
+
+                        // Check client payment status
+                        const paySnap = await window.getDocs(window.query(window.collection(window.db, "agency_payments"), window.where("uid", "==", user.uid)));
+                        paySnap.forEach(pDoc => {
+                            const pData = pDoc.data();
+                            document.getElementById('paymentStatusDisplay').style.display = 'block';
+                            document.getElementById('payStatusBadge').innerText = pData.status;
+                            document.getElementById('payStatusBadge').style.color = pData.status.includes('Approved') ? 'var(--whatsapp)' : (pData.status.includes('Rejected') ? '#ff4757' : 'var(--gold)');
+                        });
+
                     } catch(e) { console.error(e); }
                 } else {
                     document.getElementById('loggedOutView').style.display = 'block';
@@ -1257,6 +1435,7 @@
             const container = document.getElementById('adminUserListContainer');
             const leadsContainer = document.getElementById('adminLeadsListContainer');
             const chatLogsContainer = document.getElementById('adminChatLogsContainer');
+            const paymentProofsContainer = document.getElementById('adminPaymentProofsContainer');
             
             try {
                 // Load Users
@@ -1269,7 +1448,7 @@
                     html += `<div class="user-row-admin">
                         <span><strong>${data.email || 'N/A'}</strong><br><small style="opacity:0.6;">Project: ${data.assignedProject || 'Standard'}</small></span>
                         <div>
-                            <button class="filter-btn" style="padding:4px 8px; font-size:0.65rem; background:var(--primary); color:#000;" onclick="adminUpdateMilestone('${docSnap.id}')">Manage</button>
+                            <button class="filter-btn" style="padding:4px 8px; font-size:0.65rem; background:var(--primary); color:#000;" onclick="adminUpdateMilestone('${docSnap.id}')">Manage Completion</button>
                             <button class="filter-btn" style="padding:4px 8px; font-size:0.65rem; background:#ff4757; color:#fff;" onclick="adminDeleteUser('${docSnap.id}')">Remove</button>
                         </div>
                     </div>`;
@@ -1278,6 +1457,26 @@
                 document.getElementById('analyticsVisitorCount').innerText = count + " Clients";
                 document.getElementById('analyticsProjectCount').innerText = count;
                 container.innerHTML = html || '<p style="text-align: center; opacity: 0.5; font-size: 0.8rem;">No user records found.</p>';
+
+                // Load Payment Proofs for Admin Approval
+                const paySnapshot = await window.getDocs(window.collection(window.db, "agency_payments"));
+                let payHtml = '';
+                paySnapshot.forEach(pDoc => {
+                    const pData = pDoc.data();
+                    let proofLink = pData.proof ? `<br><a href="${pData.proof}" target="_blank" style="color:var(--primary); font-size:0.65rem;"><i class="fas fa-image"></i> View Receipt Screenshot</a>` : '';
+                    payHtml += `<div style="padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <strong>${pData.email}</strong> (${pData.method})<br>
+                            <small style="opacity:0.7;">User: ${pData.username} | TID: <strong>${pData.tid}</strong> | Status: <span style="color:var(--gold);">${pData.status}</span></small>
+                            ${proofLink}
+                        </div>
+                        <div>
+                            <button class="filter-btn" style="background:var(--whatsapp); color:#fff; padding:4px 8px; font-size:0.65rem;" onclick="adminApprovePayment('${pDoc.id}')">Approve</button>
+                            <button class="filter-btn" style="background:#ff4757; color:#fff; padding:4px 8px; font-size:0.65rem;" onclick="adminRejectPayment('${pDoc.id}')">Reject</button>
+                        </div>
+                    </div>`;
+                });
+                paymentProofsContainer.innerHTML = payHtml || '<p style="opacity:0.5;">No payment proofs submitted yet.</p>';
 
                 // Load Chat Leads CRM
                 const leadsSnapshot = await window.getDocs(window.collection(window.db, "agency_chats_leads"));
@@ -1296,7 +1495,7 @@
                 chatsSnapshot.forEach(cDoc => {
                     const cData = cDoc.data();
                     chatsHtml += `<div style="padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
-                        <strong>${cData.sender}:</strong> ${cData.message}
+                        <strong>[${cData.sender}]:</strong> ${cData.message}
                     </div>`;
                 });
                 chatLogsContainer.innerHTML = chatsHtml || '<p style="opacity:0.5;">No active chat logs.</p>';
@@ -1313,7 +1512,7 @@
                     await window.addDoc(window.collection(window.db, "agency_chats"), {
                         message: replyText,
                         sender: "Admin (Muhammad Nazim) 👑",
-                        uid: "anonymous_visitor",
+                        uid: visitorUid,
                         timestamp: window.serverTimestamp()
                     });
                     showToast("Direct reply sent successfully!");
