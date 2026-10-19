@@ -1025,7 +1025,7 @@
             }
         }
 
-        async function sendGroqMessage() {
+         async function sendGroqMessage() {
     const input = document.getElementById('chatInput');
     const txt = input.value.trim();
     if(txt !== '') {
@@ -1049,7 +1049,7 @@
                 timestamp: window.serverTimestamp()
             });
 
-            const q = window.query(window.collection(window.db, "agency_chats"), window.where("uid", "==", senderUid), window.orderBy("timestamp", "desc"), window.limit(10));
+            const q = window.query(window.collection(window.db, "agency_chats"), window.where("uid", "==", senderUid), window.orderBy("timestamp", "desc"), window.limit(5));
             const querySnapshot = await window.getDocs(q);
             let chatHistory = [];
             querySnapshot.forEach((doc) => {
@@ -1146,7 +1146,7 @@ function initLiveChatSync() {
             body.scrollTop = body.scrollHeight;
         }, (error) => { console.log("Chat sync waiting...", error); });
     });
-}  
+}
         
         async function submitServiceBooking() {
             const name = document.getElementById('bookingName').value.trim();
