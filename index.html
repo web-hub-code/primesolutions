@@ -1025,13 +1025,13 @@
             }
         }
 
-          Async function sendGroqMessage() {
+          async function sendGroqMessage() {
     const input = document.getElementById('chatInput');
     const txt = input.value.trim();
     if(txt !== '') {
         input.value = '';
         const currentUser = window.auth.currentUser;
-        const senderName = currentUser ? currentUser.email : 'Visitor_' + Math.floor(Math.random() * 10);
+        const senderName = currentUser ? currentUser.email : 'Visitor_' + Math.floor(Math.random() * 1000);
         const senderUid = currentUser ? currentUser.uid : 'anonymous_visitor';
 
         try {
@@ -1042,7 +1042,8 @@
                 timestamp: window.serverTimestamp()
             });
 
-            const q = window.query(window.collection(window.db, "agency_chats"), window.orderBy("timestamp", "desc"), window.limit(50));
+            // Memory limit ko 10 se barha kar 20 kar diya gaya hai
+            const q = window.query(window.collection(window.db, "agency_chats"), window.orderBy("timestamp", "desc"), window.limit(20));
             const querySnapshot = await window.getDocs(q);
             let chatHistory = [];
             querySnapshot.forEach((doc) => {
