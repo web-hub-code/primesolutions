@@ -1049,7 +1049,7 @@
                 timestamp: window.serverTimestamp()
             });
 
-            const q = window.query(window.collection(window.db, "agency_chats"), window.where("uid", "==", senderUid), window.orderBy("timestamp", "desc"), window.limit(5));
+            const q = window.query(window.collection(window.db, "agency_chats"), window.where("uid", "==", senderUid), window.orderBy("timestamp", "desc"), window.limit(10));
             const querySnapshot = await window.getDocs(q);
             let chatHistory = [];
             querySnapshot.forEach((doc) => {
@@ -1092,8 +1092,6 @@
             let aiReply = "Maaf kijiye, main abhi iska jawab nahi de pa rahi hoon.";
             if (data.choices && data.choices.length > 0 && data.choices[0].message?.content) {
                 aiReply = data.choices[0].message.content;
-            } else if (data.error) {
-                console.error("Groq API Error:", data.error);
             }
 
             await window.addDoc(window.collection(window.db, "agency_chats"), {
@@ -1104,7 +1102,6 @@
             });
 
         } catch(e) {
-            console.error("Fetch Exception:", e);
             showToast("AI response failed to load.");
         }
     }
