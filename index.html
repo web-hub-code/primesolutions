@@ -241,7 +241,6 @@
     <!-- Sticky Navbar -->
     <nav class="navbar">
         <a href="#home" class="nav-brand">
-            <!-- Purana original logo image -->
             <img src="Screenshot_2026-04-12-10-02-54-39.png" class="nav-logo" id="eagleLogo" alt="Muhammad Nazim CEO">
             <span>PRIME SOLUTIONS</span>
         </a>
@@ -297,10 +296,9 @@
 
         <div class="hero-visual" data-aos="fade-left">
             <div class="hero-img-card">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80" alt="Modern Tech Architecture">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80" alt="Modern Tech Architecture">
                 <div class="floating-ceo-card">
                     <div style="display:flex; align-items:center; gap:12px;">
-                        <!-- Purana original logo image -->
                         <img src="Screenshot_2026-04-12-10-02-54-39.png" style="width:48px; height:48px; border-radius:50%; border:2px solid var(--primary); object-fit:cover; padding:1px;" alt="M Nazim">
                         <div>
                             <h4 style="font-size:0.95rem; margin:0;">Muhammad Nazim</h4>
@@ -374,7 +372,7 @@
             </div>
 
             <div class="glass-card portfolio-card work-item" data-category="fintech" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80" class="portfolio-img" alt="MintCrestGold">
+                <img src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=800&q=80" class="portfolio-img" alt="MintCrestGold">
                 <div class="portfolio-body">
                     <div>
                         <span class="badge-pill" style="font-size:0.65rem; color:var(--gold); border-color:var(--gold);">FINTECH</span>
@@ -525,6 +523,14 @@
                                 <div class="timeline-item">Secure Payment & API Integration</div>
                                 <div class="timeline-item">Final Deployment & SSL Handshake</div>
                             </div>
+                        </div>
+
+                        <!-- Change Request / Add-On Module -->
+                        <div style="background:rgba(255,255,255,0.02); padding:20px; border-radius:18px; border:1px solid var(--border); margin-bottom:20px;">
+                            <h4 style="color:var(--primary); margin-bottom:10px;"><i class="fas fa-plus-circle"></i> Request Project Change / Add-On</h4>
+                            <input type="text" id="clientChangeTitle" class="form-input" placeholder="Feature or Change Request (e.g., Mobile PWA Version)">
+                            <textarea id="clientChangeDesc" class="form-input" placeholder="Describe specifications..." style="height:70px; resize:none;"></textarea>
+                            <button class="btn-primary" style="width:100%; justify-content:center; padding:10px;" onclick="submitClientChangeRequest()">Submit Change Request</button>
                         </div>
 
                         <div style="background:rgba(255,255,255,0.02); padding:20px; border-radius:18px; border:1px solid var(--border); margin-bottom:20px;">
@@ -742,8 +748,12 @@
                 </div>
             </div>
 
+            <!-- Payment Proofs Verification Queue with Clear Option -->
             <div class="glass-card" style="padding:18px; margin-bottom:18px;">
-                <h4 style="color:var(--gold); margin-bottom:10px;"><i class="fas fa-receipt"></i> Payment Proofs Verification Queue</h4>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <h4 style="color:var(--gold);"><i class="fas fa-receipt"></i> Payment Proofs Verification Queue</h4>
+                    <button class="filter-btn" style="background:#ff4757; color:#fff; padding:4px 10px; font-size:0.7rem;" onclick="adminClearAllPayments()">Clear All Payments</button>
+                </div>
                 <div id="adminPaymentProofsContainer" style="max-height: 160px; overflow-y: auto; font-size: 0.8rem;">Loading...</div>
             </div>
 
@@ -768,19 +778,24 @@
                 <input type="text" id="adminProjDesc" class="form-input" placeholder="Short description..." style="margin-top:10px;">
                 <div style="display:flex; gap:10px;">
                     <button class="btn-primary" style="padding:10px 18px;" onclick="adminAddPortfolioItem()">Add Project</button>
-                    <button class="btn-outline" style="padding:10px 18px; border-color:#ff4757; color:#ff4757;" onclick="adminRemoveLastPortfolioItem()">Remove Last</button>
+                    <button class="filter-btn" style="background:#ff4757; color:#fff; padding:10px 18px;" onclick="adminRemoveLastPortfolioItem()">Remove Last</button>
                 </div>
             </div>
 
             <div class="grid-2" style="gap:18px; margin-bottom:18px;">
+                <!-- AI Chatbot Leads with Clear Option -->
                 <div class="glass-card" style="padding:18px;">
-                    <h4 style="color:var(--primary); margin-bottom:10px;"><i class="fas fa-headset"></i> AI Chatbot Leads</h4>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <h4 style="color:var(--primary);"><i class="fas fa-headset"></i> AI Chatbot Leads</h4>
+                        <button class="filter-btn" style="background:#ff4757; color:#fff; padding:4px 10px; font-size:0.7rem;" onclick="adminClearAllLeads()">Clear Leads</button>
+                    </div>
                     <div id="adminLeadsListContainer" style="max-height: 150px; overflow-y: auto; font-size: 0.8rem;">Loading...</div>
                 </div>
+
                 <div class="glass-card" style="padding:18px;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                         <h4 style="color:var(--primary);"><i class="fas fa-comments"></i> Live Chat Logs</h4>
-                        <button class="filter-btn" style="background:#ff4757; color:#fff; padding:4px 10px; font-size:0.7rem;" onclick="adminClearAllChats()">Clear</button>
+                        <button class="filter-btn" style="background:#ff4757; color:#fff; padding:4px 10px; font-size:0.7rem;" onclick="adminClearAllChats()">Clear Chats</button>
                     </div>
                     <div id="adminChatLogsContainer" style="max-height: 110px; overflow-y: auto; font-size: 0.78rem; margin-bottom:8px;">Loading...</div>
                     <div style="display:flex; gap:6px;">
@@ -959,6 +974,25 @@
                 document.getElementById('payStatusBadge').innerText = "Pending Admin Review";
                 document.getElementById('payStatusBadge').style.color = "var(--gold)";
             } catch(e) { showToast("Failed to submit payment proof."); }
+        }
+
+        async function submitClientChangeRequest() {
+            const title = document.getElementById('clientChangeTitle').value.trim();
+            const desc = document.getElementById('clientChangeDesc').value.trim();
+            const user = window.auth.currentUser;
+            if(!user) { showToast("Please sign in first."); return; }
+            if(title) {
+                try {
+                    await window.addDoc(window.collection(window.db, "agency_changes"), {
+                        uid: user.uid, email: user.email, title, desc, status: "Submitted 🟡", timestamp: window.serverTimestamp()
+                    });
+                    showToast("Change request submitted successfully!");
+                    document.getElementById('clientChangeTitle').value = "";
+                    document.getElementById('clientChangeDesc').value = "";
+                } catch(e) { showToast("Failed to submit change request."); }
+            } else {
+                showToast("Please enter a title for your request.");
+            }
         }
 
         async function submitClientTicket() {
@@ -1193,7 +1227,7 @@
                         </div>
                     </div>
                     <div class="glass-card portfolio-card work-item" data-category="fintech">
-                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80" class="portfolio-img" alt="MintCrestGold">
+                        <img src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=800&q=80" class="portfolio-img" alt="MintCrestGold">
                         <div class="portfolio-body">
                             <div>
                                 <span class="badge-pill" style="font-size:0.65rem; color:var(--gold); border-color:var(--gold);">FINTECH</span>
@@ -1320,6 +1354,28 @@
             await window.setDoc(window.doc(window.db, "agency_payments", payId), { status: "Rejected ❌" }, { merge: true });
             showToast("Payment Rejected.");
             loadAdminData();
+        }
+
+        async function adminClearAllPayments() {
+            if(confirm("Clear all payment verification records?")) {
+                const snap = await window.getDocs(window.collection(window.db, "agency_payments"));
+                let p = [];
+                snap.forEach(d => p.push(window.deleteDoc(window.doc(window.db, "agency_payments", d.id))));
+                await Promise.all(p);
+                showToast("All payment records cleared!");
+                loadAdminData();
+            }
+        }
+
+        async function adminClearAllLeads() {
+            if(confirm("Clear all AI chatbot leads?")) {
+                const snap = await window.getDocs(window.collection(window.db, "agency_chats_leads"));
+                let p = [];
+                snap.forEach(d => p.push(window.deleteDoc(window.doc(window.db, "agency_chats_leads", d.id))));
+                await Promise.all(p);
+                showToast("AI chatbot leads cleared!");
+                loadAdminData();
+            }
         }
 
         async function adminClearAllChats() {
